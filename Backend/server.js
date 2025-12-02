@@ -18,10 +18,19 @@ const app = express();
 
 // --- Middleware Setup ---
 app.use(express.json()); // Body parser for JSON data - MUST come first
-app.use(cors({ 
-  origin: ['http://localhost:5173', 'http://localhost:5174', 'http://localhost:5175'],
-  credentials: true 
-})); // Allow frontend access
+
+// CORS configuration: allow local dev + deployed frontend
+app.use(
+  cors({
+    origin: [
+      'http://localhost:5173',
+      'http://localhost:5174',
+      'http://localhost:5175',
+      'https://productivity-hub-sand.vercel.app',
+    ],
+    credentials: true,
+  })
+); // Allow frontend access
 
 // --- Route Mounting ---
 app.use('/api/auth', authRoutes);

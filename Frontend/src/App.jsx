@@ -1,16 +1,13 @@
 import { useEffect, useMemo, useState } from 'react';
 import './App.css';
 
-// Normalise API base URL:
-// - Prefer VITE_API_URL from env
-// - Fallback to local backend
-// - Ensure it always points at the `/api` prefix
-let apiBase = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
-apiBase = apiBase.replace(/\/$/, '');
-if (!apiBase.endsWith('/api')) {
-  apiBase = `${apiBase}/api`;
-}
-const API_BASE_URL = apiBase;
+// Prefer env var in production; fall back to sensible defaults for dev/deploy
+const API_BASE_URL = (
+  import.meta.env.VITE_API_URL ||
+  (window.location.hostname === 'localhost'
+    ? 'http://localhost:5000/api'
+    : 'https://productivity-hub-6kaq.onrender.com/api')
+).replace(/\/$/, '');
 const defaultTaskForm = { title: '', description: '', priority: 'Medium', isCompleted: false };
 
 function App() {
