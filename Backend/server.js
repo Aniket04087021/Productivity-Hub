@@ -19,7 +19,7 @@ const app = express();
 // --- Middleware Setup ---
 app.use(express.json()); // Body parser for JSON data - MUST come first
 app.use(cors({ 
-  origin: ["https://productivity-hub-6kaq.onrender.com",'http://localhost:5173', 'http://localhost:5174', 'http://localhost:5175'],
+  origin: ["https://productivity-hub-6kaq.onrender.com","https://productivity-hub-sand.vercel.app" ,'http://localhost:5173', 'http://localhost:5174', 'http://localhost:5175'],
   credentials: true 
 })); // Allow frontend access
 
