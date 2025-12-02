@@ -18,9 +18,8 @@ const app = express();
 
 // --- Middleware Setup ---
 app.use(express.json()); // Body parser for JSON data - MUST come first
-<<<<<<< HEAD
 
-// CORS configuration: allow local dev + deployed frontend
+// CORS configuration: allow local dev + deployed frontends
 app.use(
   cors({
     origin: [
@@ -28,16 +27,11 @@ app.use(
       'http://localhost:5174',
       'http://localhost:5175',
       'https://productivity-hub-sand.vercel.app',
+      'https://productivity-hub-git-main-anikets-projects-734e6763.vercel.app',
     ],
     credentials: true,
   })
 ); // Allow frontend access
-=======
-app.use(cors({ 
-  origin: ["https://productivity-hub-6kaq.onrender.com","https://productivity-hub-sand.vercel.app" ,'http://localhost:5173', 'http://localhost:5174', 'http://localhost:5175'],
-  credentials: true 
-})); // Allow frontend access
->>>>>>> 479e024c6b66af7e402ba369ec54e79648f31eea
 
 // --- Route Mounting ---
 app.use('/api/auth', authRoutes);
