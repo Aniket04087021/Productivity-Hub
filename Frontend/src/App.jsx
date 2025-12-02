@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import './App.css';
 
-const API_BASE_URL = (import.meta.env.VITE_API_URL || 'http://localhost:5000/api').replace(/\/$/, '');
+const API_BASE_URL = (import.meta.env.VITE_API_URL || 'http://localhost:5000/api' || "https://productivity-hub-6kaq.onrender.com"  ).replace(/\/$/, '');
 const defaultTaskForm = { title: '', description: '', priority: 'Medium', isCompleted: false };
 
 function App() {
