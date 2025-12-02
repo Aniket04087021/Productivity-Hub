@@ -27,7 +27,7 @@ app.use(
       'http://localhost:5174',
       'http://localhost:5175',
       'https://productivity-hub-sand.vercel.app',
-      'https://productivity-hub-r9ze.vercel.app/',
+      'https://productivity-hub-r9ze.vercel.app',
     ],
     credentials: true,
   })

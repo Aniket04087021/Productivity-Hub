@@ -1,12 +1,11 @@
 import { useEffect, useMemo, useState } from 'react';
 import './App.css';
 
-// Prefer env var in production; fall back to sensible defaults for dev/deploy
+// Use localhost API in development, Render URL in production
 const API_BASE_URL = (
-  import.meta.env.VITE_API_URL ||
-  (window.location.hostname === 'localhost'
+  window.location.hostname === 'localhost'
     ? 'http://localhost:5000/api'
-    : 'https://productivity-hub-6kaq.onrender.com/api')
+    : 'https://productivity-hub-6kaq.onrender.com/api'
 ).replace(/\/$/, '');
 const defaultTaskForm = { title: '', description: '', priority: 'Medium', isCompleted: false };
 
