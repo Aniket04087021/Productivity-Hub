@@ -252,7 +252,7 @@ function App() {
 
   const authContent = (
     <div className="auth-container card">
-      <h1>Productivity Hub</h1>
+      <h2>Get started</h2>
       <p className="muted">Sign up or log in to manage your tasks securely.</p>
 
       <form onSubmit={handleAuthSubmit} className="form-grid">
@@ -305,6 +305,27 @@ function App() {
         </button>
       </p>
     </div>
+  );
+
+  const homeContent = (
+    <main className="home-layout">
+      <section className="home-hero">
+        <h1>Stay on top of your work with Productivity Hub</h1>
+        <p className="muted">
+          A simple, secure task manager where you can create, update, and track everything
+          you need to get done.
+        </p>
+        <ul className="home-list">
+          <li>Organize tasks by priority and completion state.</li>
+          <li>Update your profile and manage your account securely.</li>
+          <li>Fast, responsive UI designed for everyday productivity.</li>
+        </ul>
+      </section>
+
+      <section className="home-auth">
+        {authContent}
+      </section>
+    </main>
   );
 
   const dashboardContent = (
@@ -498,7 +519,34 @@ function App() {
           {errorMessage || statusMessage}
         </div>
       )}
-      {hasToken ? dashboardContent : authContent}
+
+      {!hasToken ? (
+        <>
+          <header className="navbar">
+            <div className="navbar-brand">Productivity Hub</div>
+            <div className="navbar-actions">
+              <button
+                type="button"
+                className="ghost-btn"
+                onClick={() => setAuthMode('login')}
+              >
+                Log in
+              </button>
+              <button
+                type="button"
+                className="primary-btn"
+                onClick={() => setAuthMode('signup')}
+              >
+                Sign up
+              </button>
+            </div>
+          </header>
+
+          {homeContent}
+        </>
+      ) : (
+        dashboardContent
+      )}
     </div>
   );
 }
