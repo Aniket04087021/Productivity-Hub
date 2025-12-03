@@ -46,6 +46,4 @@ const updateProfile = asyncHandler(async (req, res) => {
         throw new Error('User not found');
     }
 });
-
-// ✅ CORRECT: Exporting an object containing the functions
 module.exports = { getProfile, updateProfile };
